@@ -1,0 +1,74 @@
+import cv2
+import mediapipe as mp
+import numpy as np
+
+mp_face_mesh = mp.solutions.face_mesh
+
+def detect_top_hair(img):
+    """
+    Fotoğraftaki saç üstü yoğunluğu + saç çizgisi pozisyonu çıkarılır.
+    Geriye:
+    - hair_top_dark: tepe bölgesi karanlık mı?
+    - hair_top_blur: tepe bölgesi bulanık mı?
+    döndürür.
+    """
+
+    h, w = img.shape[:2]
+
+    with mp_face_mesh.FaceMesh(
+        static_image_mode=True,
+        max_num_faces=1,
+        refine_landmarks=True
+    ) as face_mesh:
+
+        results = face_mesh.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+
+        if not results.multi_face_landmarks:
+            return {
+                "hair_top_dark": None,
+                "hair_top_blur": None
+            }
+
+        face = results.multi_face_landmarks[0]
+
+        # 🔥 Alın üstü landmark noktaları (MediaPipe referansı)
+        top_ids = [10, 338, 297, 332, 284]
+
+        points = []
+        for i in top_ids:
+            lm = face.landmark[i]
+            x, y = int(lm.x * w), int(lm.y * h)
+            points.append((x, y))
+
+        # Tepe bölgesi yüksek bir dikdörtgene genişletilir
+        xs = [p[0] for p in points]
+        ys = [p[1] for p in points]
+
+        x1, x2 = min(xs), max(xs)
+        y1 = min(ys) - int(0.25 * h)   # alnın 25% üstü
+        y2 = min(ys) + int(0.10 * h)   # biraz altı
+
+        y1 = max(y1, 0)
+        y2 = min(y2, h)
+
+        hair_region = img[y1:y2, x1:x2]
+
+        if hair_region.size == 0:
+            return {
+                "hair_top_dark": None,
+                "hair_top_blur": None
+            }
+
+        # ---- PARLAKLIK ----
+        gray = cv2.cvtColor(hair_region, cv2.COLOR_BGR2GRAY)
+        brightness = np.mean(gray)
+        hair_top_dark = brightness < 70   # eşik değiştirilebilir
+
+        # ---- BULANIKLIK ----
+        lap = cv2.Laplacian(gray, cv2.CV_64F).var()
+        hair_top_blur = lap < 70
+
+        return {
+            "hair_top_dark": hair_top_dark,
+            "hair_top_blur": hair_top_blur
+        }
