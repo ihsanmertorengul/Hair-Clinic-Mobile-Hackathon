@@ -17,7 +17,7 @@ Bu proje, saç analizi için geliştirilmiş bir mobil uygulama ve backend API s
 - [Gereksinimler](#gereksinimler)
 - [Notlar](#notlar)
 
-## 📁 Proje Yapısı
+## Proje Yapısı
 
 ```
 safdsgs/
@@ -43,7 +43,7 @@ safdsgs/
         └── Firebase.js    # Firebase yapılandırması
 ```
 
-## ✨ Özellikler
+## Özellikler
 
 ### Backend (Flask API)
 - **Görüntü Analizi**: MediaPipe ile yüz tespiti ve poz analizi
@@ -59,7 +59,7 @@ safdsgs/
 - **Analiz Sonuçları**: Detaylı analiz sonuçlarını görüntüleme
 - **Profil Yönetimi**: Kullanıcı profil bilgileri
 
-## 🛠 Teknolojiler
+## Teknolojiler
 
 ### Backend
 - **Python 3.9+**
@@ -78,7 +78,7 @@ safdsgs/
 - **Expo Camera**: Kamera erişimi
 - **Expo AV**: Ses dosyaları
 
-## 🚀 Kurulum
+## Kurulum
 
 ### Backend Kurulumu
 
@@ -139,7 +139,7 @@ safdsgs/
    - QR kodu tarayarak uygulamayı çalıştırın
    - Veya `npm run android` / `npm run ios` ile emülatörde çalıştırın
 
-## 📱 Kullanım
+## Kullanım
 
 ### Mobil Uygulama
 
@@ -201,7 +201,7 @@ Content-Type: multipart/form-data
 file: [image file]
 ```
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### `/analyze` (POST)
 Ön yüz fotoğrafı analizi yapar. Aşağıdaki kontrolleri gerçekleştirir:
@@ -279,7 +279,7 @@ API sağlık kontrolü.
 }
 ```
 
-## 📂 Proje Yapısı Detayları
+## Proje Yapısı Detayları
 
 ### Backend (`hair-test/`)
 
@@ -316,7 +316,7 @@ API sağlık kontrolü.
 - iOS için: Xcode (Mac gerekli)
 - Android için: Android Studio
 
-## ⚠️ Notlar
+## Notlar
 
 1. **API Anahtarları**: 
    - `app.py` ve `main.py` dosyalarında Google Gemini API anahtarı bulunmaktadır. Üretim ortamında bu anahtarları environment variable olarak saklayın.
