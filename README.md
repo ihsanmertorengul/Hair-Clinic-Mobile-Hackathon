@@ -303,7 +303,7 @@ API sağlık kontrolü.
 - **`service/Config.js`**: API URL yapılandırması
 - **`service/Firebase.js`**: Firebase yapılandırması
 
-## 📋 Gereksinimler
+## Gereksinimler
 
 ### Backend
 - Python 3.9 veya üzeri
