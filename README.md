@@ -21,26 +21,32 @@ Bu proje, saç analizi için geliştirilmiş bir mobil uygulama ve backend API s
 
 ## 📁 Proje Yapısı
 
-├── hair-test/ # Backend API (Flask)
-│ ├── app.py # Ana Flask uygulaması
-│ ├── main.py # Alternatif Flask uygulaması
-│ ├── requirements.txt # Python bağımlılıkları
-│ ├── uploads/ # Yüklenen görseller
-│ └── utils/ # Yardımcı modüller
-│ ├── blur.py # Bulanıklık tespiti
-│ └── brightness.py # Parlaklık analizi
+## 📁 Proje Yapısı
+
+```text
+hackathonproject/
+├── hair-test/                     # Backend API (Flask)
+│   ├── app.py                     # Ana Flask uygulaması
+│   ├── main.py                    # Alternatif Flask uygulaması
+│   ├── requirements.txt           # Python bağımlılıkları
+│   ├── uploads/                   # Yüklenen görseller
+│   └── utils/                     # Yardımcı modüller
+│       ├── blur.py                # Bulanıklık tespiti
+│       └── brightness.py          # Parlaklık analizi
 │
-└── smileHairClinic-App/ # Mobil Uygulama (React Native/Expo)
-├── App.js # Ana uygulama dosyası
-├── components/ # React bileşenleri
-│ ├── analysis/ # Analiz ekranları
-│ ├── home/ # Ana sayfa
-│ ├── login/ # Giriş/Kayıt
-│ ├── navigation/ # Navigasyon bileşenleri
-│ └── profile/ # Profil ekranları
-└── service/ # Servis dosyaları
-├── Config.js # API yapılandırması
-└── Firebase.js # Firebase yapılandırması
+└── smileHairClinic-App/           # Mobil Uygulama (React Native/Expo)
+    ├── App.js                     # Ana uygulama dosyası
+    ├── components/                # React bileşenleri
+    │   ├── analysis/              # Analiz ekranları
+    │   ├── home/                  # Ana sayfa
+    │   ├── login/                 # Giriş / Kayıt
+    │   ├── navigation/            # Navigasyon bileşenleri
+    │   └── profile/               # Profil ekranları
+    │
+    └── service/                   # Servis dosyaları
+        ├── Config.js              # API yapılandırması
+        └── Firebase.js            # Firebase yapılandırması
+
 
 ---
 
